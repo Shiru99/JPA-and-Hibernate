@@ -18,8 +18,8 @@ Object Relational Mapping (ORM) is a functionality which is used to develop and 
 
 - Read & Write operation using JDBC
 
-<img src="Screenshots/JDBC read.png" alt="Read Operation using JDBC" width="480"/> <img src="Screenshots/JDBC write.png" alt="Write Operation using JDBC" width="480"/>
+<img src="Screenshots/JDBC read.png" alt="Read Operation using JDBC" width="475"/> <img src="Screenshots/JDBC write.png" alt="Write Operation using JDBC" width="475"/>
 
 JPA simplifies these operations with Object–relational mapping  
 
-<img src="Screenshots/without JPA.jpeg" alt="without JPA.jpeg" width="480"/> <img src="Screenshots/with JPA.jpeg" alt="with JPA.jpeg" width="480"/>
+<img src="Screenshots/without JPA.jpeg" alt="without JPA.jpeg" width="475"/> <img src="Screenshots/with JPA.jpeg" alt="with JPA.jpeg" width="475"/>
