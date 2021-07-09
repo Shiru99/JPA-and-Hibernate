@@ -14,11 +14,11 @@
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/> 
 
             <!-- DB Name -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/dbName"/> 
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/test"/> 
             <!-- DB User -->
-            <property name="javax.persistence.jdbc.user" value="postgres" /> 
+            <property name="javax.persistence.jdbc.user" value="Shiru99" /> 
             <!-- DB Password -->
-            <property name="javax.persistence.jdbc.password" value="12345" /> 
+            <property name="javax.persistence.jdbc.password" value="1234" /> 
 
 
             <!-- Show SQL in console -->
