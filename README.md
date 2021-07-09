@@ -1,2 +1,2 @@
-# Hibernate
-Hibernate
+# JPA & Hibernate
+
