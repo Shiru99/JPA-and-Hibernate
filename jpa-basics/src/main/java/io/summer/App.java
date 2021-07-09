@@ -1,13 +1,15 @@
 package io.summer;
 
+
 /**
- * Hello world!
- *
+ *  JPA basics
  */
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        Employee employee = new Employee(1,"John Doe");
+
+        System.out.println(employee.getName());
     }
 }
