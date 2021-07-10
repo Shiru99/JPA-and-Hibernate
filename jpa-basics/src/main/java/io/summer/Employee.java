@@ -88,5 +88,67 @@ public class Employee {
         return "\n-----\n"+"Employee "+"\n\tDOB=" + DOB + ",\n\t age=" + age + ",\n\t debugString=" + debugString + ",\n\t employeeType=" + employeeType + ",\n\t id=" + id + ",\n\t lastUpdateAt=" + lastUpdateAt + ",\n\t name=" + name + ",\n\t ssn=" + ssn+"\n-----\n";
     }
 
-    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSsn() {
+        return ssn;
+    }
+
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Date getDOB() {
+        return DOB;
+    }
+
+    public void setDOB(Date dOB) {
+        DOB = dOB;
+    }
+
+    public Date getLastUpdateAt() {
+        return lastUpdateAt;
+    }
+
+    public void setLastUpdateAt(Date lastUpdateAt) {
+        this.lastUpdateAt = lastUpdateAt;
+    }
+
+    public EmployeeType getEmployeeType() {
+        return employeeType;
+    }
+
+    public void setEmployeeType(EmployeeType employeeType) {
+        this.employeeType = employeeType;
+    }
+
+    public String getDebugString() {
+        return debugString;
+    }
+
+    public void setDebugString(String debugString) {
+        this.debugString = debugString;
+    }
 }

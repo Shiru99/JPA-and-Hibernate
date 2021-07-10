@@ -37,11 +37,11 @@ public class App
         EntityTransaction entityTransaction =  entityManager.getTransaction();
         
         /* 1. CRUD : Create */ 
-        // entityTransaction.begin();
-        // for (Employee employee : employees) {
-        //     entityManager.persist(employee);
-        // }
-        // entityTransaction.commit();
+        entityTransaction.begin();
+        for (Employee employee : employees) {
+            // entityManager.persist(employee);
+        }
+        entityTransaction.commit();
 
         
         /*  2. CRUD : Read
@@ -53,9 +53,20 @@ public class App
                     invalid id = 21     ==> null 
                     String id = "2"     ==> Error
         */ 
-        int id = 2;
+        int id = 3;
         Employee employee = entityManager.find(Employee.class, id); 
         System.out.println(employee);
+
+
+
+        /*  3. CRUD : Update */
+        employee.setEmployeeType(EmployeeType.FULL_TIME);
+        System.out.println(employee);
+        entityTransaction.begin();
+        entityManager.persist(employee);
+        entityTransaction.commit();
+
+        
 
         entityManager.close();
         emFactory.close();
