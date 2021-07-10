@@ -41,9 +41,9 @@
                 validate : checks if existing table definitions matches with entity definitions defined
                            (useful to avoid any future errors)
                 update : updates existing one Or creates first if doesn't exist
-                none : do nothing -_-
+                none : do nothing -_- (data can be read)
             -->
-            <property name="hibernate.hbm2ddl.auto" value="create-drop" /> 
+            <property name="hibernate.hbm2ddl.auto" value="update" /> 
         </properties>
 
     </persistence-unit>

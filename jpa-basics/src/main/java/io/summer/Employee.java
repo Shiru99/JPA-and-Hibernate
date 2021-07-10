@@ -82,4 +82,11 @@ public class Employee {
         this.name = name;
         this.ssn = ssn;
     }
+
+    @Override
+    public String toString() {
+        return "\n-----\n"+"Employee "+"\n\tDOB=" + DOB + ",\n\t age=" + age + ",\n\t debugString=" + debugString + ",\n\t employeeType=" + employeeType + ",\n\t id=" + id + ",\n\t lastUpdateAt=" + lastUpdateAt + ",\n\t name=" + name + ",\n\t ssn=" + ssn+"\n-----\n";
+    }
+
+    
 }

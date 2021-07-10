@@ -36,11 +36,26 @@ public class App
         EntityManager entityManager = emFactory.createEntityManager();
         EntityTransaction entityTransaction =  entityManager.getTransaction();
         
-        entityTransaction.begin();
-        for (Employee employee : employees) {
-            entityManager.persist(employee);
-        }
-        entityTransaction.commit();
+        /* 1. CRUD : Create */ 
+        // entityTransaction.begin();
+        // for (Employee employee : employees) {
+        //     entityManager.persist(employee);
+        // }
+        // entityTransaction.commit();
+
+        
+        /*  2. CRUD : Read
+            
+                SELECT * FROM EMPLOYEE_DATA where id=1; 
+
+                for 
+                
+                    invalid id = 21     ==> null 
+                    String id = "2"     ==> Error
+        */ 
+        int id = 2;
+        Employee employee = entityManager.find(Employee.class, id); 
+        System.out.println(employee);
 
         entityManager.close();
         emFactory.close();
