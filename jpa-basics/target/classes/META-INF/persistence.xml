@@ -36,10 +36,14 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /> 
 
             <!-- 
-                create / create-drop : if existing cascade and then creates new
-                update : updates in existing one & creates first if doesn't exist
+                create : if existing cascades and then creates new
+                create-drop : similar to create + after closing persistence context it cascades all
+                validate : checks if existing table definitions matches with entity definitions defined
+                           (useful to avoid any future errors)
+                update : updates existing one Or creates first if doesn't exist
+                none : do nothing -_-
             -->
-            <property name="hibernate.hbm2ddl.auto" value="create" /> 
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" /> 
         </properties>
 
     </persistence-unit>

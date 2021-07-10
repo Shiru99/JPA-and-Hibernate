@@ -41,5 +41,8 @@ public class App
             entityManager.persist(employee);
         }
         entityTransaction.commit();
+
+        entityManager.close();
+        emFactory.close();
     }
 }
