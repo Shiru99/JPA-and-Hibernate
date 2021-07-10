@@ -39,7 +39,7 @@ public class App
         /* 1. CRUD : Create */ 
         entityTransaction.begin();
         for (Employee employee : employees) {
-            // entityManager.persist(employee);
+            entityManager.persist(employee);
         }
         entityTransaction.commit();
 
@@ -58,14 +58,18 @@ public class App
         System.out.println(employee);
 
 
-
         /*  3. CRUD : Update */
         employee.setEmployeeType(EmployeeType.FULL_TIME);
-        System.out.println(employee);
         entityTransaction.begin();
         entityManager.persist(employee);
         entityTransaction.commit();
 
+        
+        /*  4. CRUD : Delete */
+        employee = entityManager.find(Employee.class, 1);
+        entityTransaction.begin();
+        entityManager.remove(employee);
+        entityTransaction.commit();
         
 
         entityManager.close();
