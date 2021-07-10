@@ -1,12 +1,13 @@
 package io.summer;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -29,9 +30,14 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "EMPLOYEE_DATA")
 public class Employee {
+  
+    /*   @Id    -   primary key
 
-    @Id                 // primary key
-    private int id;
+        @GeneratedValue - property of database
+    */
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) // default
+    private int id;   
 
     private String name;
 
@@ -62,7 +68,7 @@ public class Employee {
     }
 
     public Employee(int id, String name, String ssn,int age, Date DOB, Date lastUpdateAt, EmployeeType employeeType) {
-        this.id = id;
+        // this.id = id;
         this.name = name;
         this.ssn = ssn;
         this.age = age;
@@ -72,7 +78,7 @@ public class Employee {
     }
 
     public Employee(int id, String name, String ssn) {
-        this.id = id;
+        // this.id = id;
         this.name = name;
         this.ssn = ssn;
     }
