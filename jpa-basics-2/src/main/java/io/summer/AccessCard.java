@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class AccessCard {
@@ -16,6 +17,23 @@ public class AccessCard {
     private Date issuedDate;
     private boolean isActive;
     private String firmwareVersion;
+
+    /* 
+        mappedBy = "card" : this (AccessCard) is same as "card" of owner (Employee)
+        
+        to avoid loop : employee -> card -> employee -> card -> ...
+    */ 
+    @OneToOne(mappedBy = "card")    
+    private Employee owner;
+    
+
+    public Employee getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Employee owner) {
+        this.owner = owner;
+    }
 
     public AccessCard(){
         
@@ -29,8 +47,7 @@ public class AccessCard {
 
     @Override
     public String toString() {
-        return "AccessCard [firmwareVersion=" + firmwareVersion + ", id=" + id + ", isActive=" + isActive
-                + ", issuedDate=" + issuedDate + "]";
+        return "\n\t*******\n"+"\tAccessCard [firmwareVersion=" + firmwareVersion + ", id=" + id + ", isActive=" + isActive + ", issuedDate=" + issuedDate + "]"+"\n\t*******\n";
     }
 
     public boolean isActive() {

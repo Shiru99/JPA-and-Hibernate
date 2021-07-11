@@ -11,10 +11,11 @@ public class Reader {
         EntityManager entityManager = emFactory.createEntityManager();
 
         Employee employee =  entityManager.find(Employee.class, 2);
-        System.out.println("\n*******\n");
-        System.out.println(employee.getName());
-        System.out.println("\n*******\n");
-        System.out.println(employee.getCard());
+        System.out.println(employee);
+
+        AccessCard card = entityManager.find(AccessCard.class, 4);
+        System.out.println(card);
+        System.out.println(card.getOwner());
 
     }
 }

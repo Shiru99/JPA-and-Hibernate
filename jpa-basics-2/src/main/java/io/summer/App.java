@@ -22,8 +22,9 @@ public class App
         PayCheck check2 = new PayCheck(new Date(), 50000);
 
         employee2.setCard(card1);
+        card1.setOwner(employee2);
         employee3.setCard(card2);
-
+        card2.setOwner(employee3);
 
         EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("myApp");
 

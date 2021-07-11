@@ -43,8 +43,8 @@ public class Employee {
         Default for 1-1 : fetch = FetchType.EAGER - fetches all referenced data
         Default for m-* : fetch = FetchType.LAZY - fetches referenced data on demand
     */
-    // @OneToOne                        
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne                        
+    // @OneToOne(fetch = FetchType.LAZY)
     private AccessCard card;
 
     public AccessCard getCard() {
@@ -72,7 +72,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "\n*******\n"+"Employee [card=" + card + ", employeeType=" + employeeType + ", id=" + id + ", lastUpdateAt=" + lastUpdateAt + ", name=" + name + ", ssn=" + ssn + "]"+"\n*******\n";
+        return "\n*******\n"+"Employee :\n" + "employeeType=" + employeeType + ", id=" + id + ", lastUpdateAt=" + lastUpdateAt + ", name=" + name + ", ssn=" + ssn +"\nEmployee card :"+ card+"\n*******\n";
     }
 
     public String getName() {
