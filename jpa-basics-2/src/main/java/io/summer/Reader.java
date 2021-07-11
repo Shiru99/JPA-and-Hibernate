@@ -22,6 +22,7 @@ public class Reader {
 
         EmailGroup emailGroup = entityManager.find(EmailGroup.class, 10);
         System.out.println(emailGroup);
+        System.out.println(emailGroup.getEmployee());
 
     }
 }

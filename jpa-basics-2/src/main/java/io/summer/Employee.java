@@ -12,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -70,7 +72,15 @@ public class Employee {
         this.payChecks.add(payCheck);
     }
 
-    @ManyToMany()
+    /*
+        Caution : FetchType.EAGER can be resource extensive (may cause chain reaction effect)
+    */
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "email_group_subscription",
+        joinColumns = @JoinColumn(name="id_employee"),
+        inverseJoinColumns = @JoinColumn(name = "subscription_group_id")
+    )
     private List<EmailGroup> emailGroups = new ArrayList<EmailGroup>();
 
     public List<EmailGroup> getEmailGroups() {
