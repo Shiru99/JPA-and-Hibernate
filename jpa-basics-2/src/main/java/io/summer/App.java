@@ -23,6 +23,12 @@ public class App
             )
         );
 
+        AccessCard card1 = new AccessCard(new Date(),true,"2.1.2");
+        AccessCard card2 = new AccessCard(new Date(),false,"1.0.3");
+
+        PayCheck check1 = new PayCheck(new Date(), 20000);
+        PayCheck check2 = new PayCheck(new Date(), 50000);
+
 
         EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("myApp");
 
@@ -31,31 +37,19 @@ public class App
         
         /* 1. CRUD : Create */ 
         entityTransaction.begin();
-        for (Employee employee : employees) {
-            entityManager.persist(employee);
-        }
+
+            for (Employee employee : employees) {
+                entityManager.persist(employee);
+            }
+
+            entityManager.persist(card1);
+            entityManager.persist(card2);
+
+            entityManager.persist(check1);
+            entityManager.persist(check2);
+
         entityTransaction.commit();
 
-        
-        /*  2. CRUD : Read */ 
-        int id = 3;
-        Employee employee = entityManager.find(Employee.class, id); 
-        System.out.println(employee);
-
-
-        /*  3. CRUD : Update */
-        employee.setEmployeeType(EmployeeType.FULL_TIME);
-        entityTransaction.begin();
-        entityManager.persist(employee);
-        entityTransaction.commit();
-
-        
-        /*  4. CRUD : Delete */
-        employee = entityManager.find(Employee.class, 1);
-        entityTransaction.begin();
-        entityManager.remove(employee);
-        entityTransaction.commit();
-        
 
         entityManager.close();
         emFactory.close();
