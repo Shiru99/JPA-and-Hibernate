@@ -20,5 +20,8 @@ public class Reader {
         System.out.println(check.getEmployee());
         System.out.println(employee.getPayChecks());
 
+        EmailGroup emailGroup = entityManager.find(EmailGroup.class, 10);
+        System.out.println(emailGroup);
+
     }
 }

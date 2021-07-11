@@ -34,6 +34,18 @@ public class App
         employee3.setPayChecks(check1);
         employee3.setPayChecks(check3);
         
+        EmailGroup group1 = new EmailGroup("Project Delta");
+        EmailGroup group2 = new EmailGroup("Goa Trip");
+
+        group1.setEmployee(employee2);
+        employee2.setEmailGroups(group1);
+        group1.setEmployee(employee3);
+        employee3.setEmailGroups(group1);
+
+        group2.setEmployee(employee1);
+        employee1.setEmailGroups(group2);
+        group2.setEmployee(employee2);
+        employee2.setEmailGroups(group2);
 
         EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("myApp");
 
@@ -53,6 +65,9 @@ public class App
             entityManager.persist(check1);
             entityManager.persist(check2);
             entityManager.persist(check3);
+
+            entityManager.persist(group1);
+            entityManager.persist(group2);
 
         entityTransaction.commit();
 
