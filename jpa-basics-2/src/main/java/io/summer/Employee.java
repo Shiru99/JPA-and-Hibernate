@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +21,6 @@ import javax.persistence.Transient;
 @Table(name = "EMPLOYEE_DATA")
 public class Employee {
   
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // default
     private int id;   
@@ -39,7 +39,12 @@ public class Employee {
     @Transient
     private String debugString; 
 
-    @OneToOne
+    /* 
+        Default for 1-1 : fetch = FetchType.EAGER - fetches all referenced data
+        Default for m-* : fetch = FetchType.LAZY - fetches referenced data on demand
+    */
+    // @OneToOne                        
+    @OneToOne(fetch = FetchType.LAZY)
     private AccessCard card;
 
     public AccessCard getCard() {
@@ -67,15 +72,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "\n*******\n"+"Employee [employeeType=" + employeeType + ", id=" + id + ", lastUpdateAt=" + lastUpdateAt + ", name=" + name + ", ssn=" + ssn + "]"+"\n*******\n";
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        return "\n*******\n"+"Employee [card=" + card + ", employeeType=" + employeeType + ", id=" + id + ", lastUpdateAt=" + lastUpdateAt + ", name=" + name + ", ssn=" + ssn + "]"+"\n*******\n";
     }
 
     public String getName() {
