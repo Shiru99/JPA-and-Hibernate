@@ -51,7 +51,7 @@ public class EmailGroup {
 
     @Override
     public String toString() {
-        return "EmailGroup [id=" + id + ", name=" + name + "]";
+        return "\n\t*******\n"+"\tEmailGroup name = " + name + ", ID-"+id+ "\n\t*******\n";
     }
 
 }

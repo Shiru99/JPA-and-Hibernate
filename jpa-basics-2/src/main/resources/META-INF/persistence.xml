@@ -6,7 +6,7 @@
     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd" 
 >
 
-    <persistence-unit name="myApp" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="creator" transaction-type="RESOURCE_LOCAL">
 
         <properties>
 
@@ -59,6 +59,21 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /> 
             <!-- none : do nothing -_- (data can be read) -->
             <property name="hibernate.hbm2ddl.auto" value="none" /> 
+        </properties>
+    </persistence-unit>
+
+
+    <persistence-unit name="editor" transaction-type="RESOURCE_LOCAL">
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/> 
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/test"/> 
+            <property name="javax.persistence.jdbc.user" value="Shiru99" /> 
+            <property name="javax.persistence.jdbc.password" value="1234" /> 
+            <property name="hibernate.show_sql" value="true" /> 
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /> 
+            <!-- none : do nothing -_- (data can be read) -->
+            <property name="hibernate.hbm2ddl.auto" value="update" /> 
         </properties>
     </persistence-unit>
 

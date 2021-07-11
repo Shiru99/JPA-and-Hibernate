@@ -108,7 +108,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "\n*******\n"+"Employee :\n" + "employeeType=" + employeeType + ", id=" + id + ", lastUpdateAt=" + lastUpdateAt + ", name=" + name + ", ssn=" + ssn +"\nEmployee card :"+ card+"\n*******\n";
+        return "\n*******\n"+"Employee :\n" + "employeeType=" + employeeType + ", id=" + id + ", lastUpdateAt=" + lastUpdateAt + ", name=" + name + ", ssn=" + ssn +"\nemailGroups : " + emailGroups +"\nEmployee card :"+ card +"\n*******\n";
     }
 
     public String getName() {
