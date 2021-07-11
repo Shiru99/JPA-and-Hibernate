@@ -44,3 +44,6 @@
     
     * else <b> RESOURCE_LOCAL </b>
 
+---
+
+## Overview of JPA/Hibernate Cascade Types : [@](https://www.baeldung.com/jpa-cascade-types)
