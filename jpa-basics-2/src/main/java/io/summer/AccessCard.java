@@ -17,6 +17,10 @@ public class AccessCard {
     private boolean isActive;
     private String firmwareVersion;
 
+    public AccessCard(){
+        
+    }
+
     public AccessCard(Date issuedDate, boolean isActive,String firmwareVersion) {
         this.issuedDate = issuedDate;
         this.isActive = isActive;
