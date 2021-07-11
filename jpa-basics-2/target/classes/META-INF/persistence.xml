@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+    xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+    http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd" 
+>
+
+    <persistence-unit name="myApp" transaction-type="RESOURCE_LOCAL">
+
+        <properties>
+
+            <!-- DB Driver -->
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/> 
+
+            <!-- DB Name -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/test"/> 
+            <!-- DB User -->
+            <property name="javax.persistence.jdbc.user" value="Shiru99" /> 
+            <!-- DB Password -->
+            <property name="javax.persistence.jdbc.password" value="1234" /> 
+
+
+            <!-- Show SQL queries in console -->
+            <property name="hibernate.show_sql" value="true" /> 
+             <!-- Show SQL queries in format -->
+            <property name="hibernate.format_sql" value="true" />
+
+            <!-- 
+                Database Dialect :
+                
+                A database dialect is a configuration setting for platform independent software (JPA, Hibernate, etc) which allows such software to translate its generic SQL statements into vendor specific DDL, DML.
+                
+                SQL Server, Oracle, MySQL, and PostgreSQL are all different databases that have their own slightly different SQL dialects
+            -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /> 
+
+            <!-- 
+                create : if existing cascades and then creates new
+                create-drop : similar to create + after closing persistence context it cascades all
+                validate : checks if existing table definitions matches with entity definitions defined
+                           (useful to avoid any future errors)
+                update : updates existing one Or creates first if doesn't exist
+                none : do nothing -_- (data can be read)
+            -->
+            <property name="hibernate.hbm2ddl.auto" value="create" /> 
+        </properties>
+
+    </persistence-unit>
+
+</persistence>
