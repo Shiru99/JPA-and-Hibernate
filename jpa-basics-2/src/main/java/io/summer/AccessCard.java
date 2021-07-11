@@ -23,6 +23,12 @@ public class AccessCard {
         this.firmwareVersion = firmwareVersion;
     }
 
+    @Override
+    public String toString() {
+        return "AccessCard [firmwareVersion=" + firmwareVersion + ", id=" + id + ", isActive=" + isActive
+                + ", issuedDate=" + issuedDate + "]";
+    }
+
     public boolean isActive() {
         return isActive;
     }

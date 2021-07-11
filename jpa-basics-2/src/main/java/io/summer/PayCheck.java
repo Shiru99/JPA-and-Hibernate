@@ -20,7 +20,12 @@ public class PayCheck {
         this.issueDate = issueDate;
         this.amount = amount;
     }
-
+    
+    @Override
+    public String toString() {
+        return "PayCheck [amount=" + amount + ", id=" + id + ", issueDate=" + issueDate + "]";
+    }
+    
     public Date getIssueDate() {
         return issueDate;
     }
