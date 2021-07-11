@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -17,7 +18,8 @@ public class PayCheck {
     private Date issueDate;
     private float amount;
 
-    @ManyToOne
+    @ManyToOne 
+    @JoinColumn(name = "paycheck_for", unique = false)   // Foreign key reference
     private Employee employee;
 
     public Employee getEmployee() {
