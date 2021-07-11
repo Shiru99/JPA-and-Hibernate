@@ -17,14 +17,20 @@ public class App
 
         AccessCard card1 = new AccessCard(new Date(),true,"2.1.2");
         AccessCard card2 = new AccessCard(new Date(),false,"1.0.3");
-
-        PayCheck check1 = new PayCheck(new Date(), 20000);
-        PayCheck check2 = new PayCheck(new Date(), 50000);
-
+        
         employee2.setCard(card1);
         card1.setOwner(employee2);
         employee3.setCard(card2);
         card2.setOwner(employee3);
+
+        PayCheck check1 = new PayCheck(new Date(), 20000);
+        PayCheck check2 = new PayCheck(new Date(), 50000);
+        PayCheck check3 = new PayCheck(new Date(), 50000);
+
+        check1.setEmployee(employee3);
+        check2.setEmployee(employee2);
+        check3.setEmployee(employee3);
+        
 
         EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("myApp");
 
@@ -43,6 +49,7 @@ public class App
 
             entityManager.persist(check1);
             entityManager.persist(check2);
+            entityManager.persist(check3);
 
         entityTransaction.commit();
 

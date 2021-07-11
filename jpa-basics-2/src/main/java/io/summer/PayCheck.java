@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class PayCheck {
@@ -15,6 +16,17 @@ public class PayCheck {
     private int id;
     private Date issueDate;
     private float amount;
+
+    @ManyToOne
+    private Employee employee;
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
     public PayCheck() {
 
@@ -27,7 +39,7 @@ public class PayCheck {
 
     @Override
     public String toString() {
-        return "PayCheck [amount=" + amount + ", id=" + id + ", issueDate=" + issueDate + "]";
+        return "\nPayCheck [amount=" + amount + ", id=" + id + ", issueDate=" + issueDate + "]";
     }
 
     public Date getIssueDate() {

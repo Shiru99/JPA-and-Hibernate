@@ -14,8 +14,11 @@ public class Reader {
         System.out.println(employee);
 
         AccessCard card = entityManager.find(AccessCard.class, 4);
-        System.out.println(card);
         System.out.println(card.getOwner());
+
+        PayCheck check = entityManager.find(PayCheck.class, 6);
+        System.out.println(check);
+        System.out.println(check.getEmployee());
 
     }
 }
