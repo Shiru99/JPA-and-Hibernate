@@ -10,15 +10,15 @@ public class Reader {
         EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("reader");
         EntityManager entityManager = emFactory.createEntityManager();
 
-        Employee employee =  entityManager.find(Employee.class, 2);
+        Employee employee =  entityManager.find(Employee.class, 3);
         System.out.println(employee);
 
         AccessCard card = entityManager.find(AccessCard.class, 4);
         System.out.println(card.getOwner());
 
         PayCheck check = entityManager.find(PayCheck.class, 6);
-        System.out.println(check);
         System.out.println(check.getEmployee());
+        System.out.println(employee.getPayChecks());
 
     }
 }

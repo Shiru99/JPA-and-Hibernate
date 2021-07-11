@@ -30,6 +30,9 @@ public class App
         check1.setEmployee(employee3);
         check2.setEmployee(employee2);
         check3.setEmployee(employee3);
+        employee2.setPayChecks(check2);
+        employee3.setPayChecks(check1);
+        employee3.setPayChecks(check3);
         
 
         EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("myApp");
