@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -16,6 +17,8 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "EMPLOYEE_DATA")
+@NamedQuery(query = "SELECT e FROM Employee e  WHERE e.name LIKE 'J%'",name = "query1")
+@NamedQuery(query = "SELECT e from Employee e WHERE e.card.isActive = :status",name = "query2")
 public class Employee {
 
     @Id

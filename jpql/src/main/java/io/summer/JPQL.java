@@ -92,7 +92,7 @@ public class JPQL
             System.out.println("Name : "+object[0]+" issued Access card on : "+object[1]);
         }
 
-        /*  JPQL parameters to avoid SQL injection  */
+        /*  JPQL parameters to avoid SQL injection - :var */
         System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 
         // String id = " 5 ;  DELETE * FROM Employee ";
@@ -112,6 +112,24 @@ public class JPQL
         for (Employee employee : resultList5) {
             System.out.println(employee);
         }
+
+        
+        /*  Named Queries */
+        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+
+        TypedQuery<Employee> query6 = entityManager.createNamedQuery("query1",Employee.class);
+        List<Employee> resultList6 = query6.getResultList();
+        for (Employee employee : resultList6) {
+            System.out.println(employee);
+        }
+
+        TypedQuery<Employee> query7 = entityManager.createNamedQuery("query2",Employee.class);
+        query7.setParameter("status", false);
+        List<Employee> resultList7 = query7.getResultList();
+        for (Employee employee : resultList7) {
+            System.out.println(employee);
+        }
+
 
         entityManager.close();
         emFactory.close();
