@@ -1,5 +1,8 @@
 # JPA basics
 
+<center><img src="Screenshots/entity-life-cycle.png" alt="Entity Life Cycle" width="600"/> </center>
+
+
 ## Some Basic Terms & Definitions : [@](https://dzone.com/articles/resource-local-vs-jta-transaction-types-and-payara)
 
 * <b>What Is a Persistent-Unit?</b>
@@ -17,7 +20,7 @@
 
 * <b>What Is EntityManager? & persistence-context </b>
 
-    <img src="Screenshots/transaction.png" alt="transaction" width="600"/> 
+    <center><img src="Screenshots/transaction.png" alt="transaction" width="600"/></center>
 
     https://dzone.com/articles/resource-local-vs-jta-transaction-types-and-payara
 
