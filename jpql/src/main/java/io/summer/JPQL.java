@@ -59,6 +59,26 @@ public class JPQL
             System.out.println(employee);
         }
 
+        /*  JPQL - joins with relationship
+
+                SQL query   :   "SELECT e.* 
+                                    from employee_data e JOIN accesscard a
+                                        ON e.card_id = a.id 
+                                        AND a.isactive = true
+                                ";
+                                    
+                JPQL        :   "SELECT e from Employee e WHERE e.card.isActive = true";
+        */
+        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+        
+        String qString3 =   "SELECT e from Employee e WHERE e.card.isActive = true";
+
+        TypedQuery<Employee> query3 = entityManager.createQuery(qString3,Employee.class);
+        List<Employee> resultList3 = query3.getResultList();
+
+        for (Employee employee : resultList3) {
+            System.out.println(employee);
+        }
 
         entityManager.close();
         emFactory.close();
