@@ -11,7 +11,7 @@ public class JPQL
 {
     public static void main( String[] args )
     {
-        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("creator");
+        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("editor");
         EntityManager entityManager = emFactory.createEntityManager();
 
         System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");

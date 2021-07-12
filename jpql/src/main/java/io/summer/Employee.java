@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,6 +33,17 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private EmployeeType employeeType;
 
+    @OneToOne
+    private AccessCard card;
+
+    public AccessCard getCard() {
+        return card;
+    }
+
+    public void setCard(AccessCard card) {
+        this.card = card;
+    }
+
     public Employee() {
     }
 
@@ -49,7 +61,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "\n*******\n" + "Employee :\n" + "employeeType=" + employeeType + ", id=" + id + ", lastUpdateAt=" + lastUpdateAt + ", name=" + name + ", ssn=" + ssn+"\n*******\n";
+        return "\n*******\n"+"Employee :\n" + "employeeType=" + employeeType + ", id=" + id + ", lastUpdateAt=" + lastUpdateAt + ", name=" + name + ", ssn=" + ssn +"\nEmployee card :"+ card +"\n*******\n";
     }
 
     public String getName() {
