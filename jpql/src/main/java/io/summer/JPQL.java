@@ -92,6 +92,27 @@ public class JPQL
             System.out.println("Name : "+object[0]+" issued Access card on : "+object[1]);
         }
 
+        /*  JPQL parameters to avoid SQL injection  */
+        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+
+        // String id = " 5 ;  DELETE * FROM Employee ";
+        // String qString5 =   "SELECT e from Employee e "+
+        //                     "   WHERE e.id < " + id
+        //                     ;
+
+        String idValue = "5";
+        String qString5 =   "SELECT e from Employee e "+
+                            "   WHERE e.id < :IDVal"
+                            ;
+        
+        TypedQuery<Employee> query5 = entityManager.createQuery(qString5,Employee.class);
+        query5.setParameter("IDVal", Integer.parseInt(idValue));
+        List<Employee> resultList5 = query5.getResultList();
+
+        for (Employee employee : resultList5) {
+            System.out.println(employee);
+        }
+
         entityManager.close();
         emFactory.close();
     }
