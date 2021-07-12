@@ -80,6 +80,18 @@ public class JPQL
             System.out.println(employee);
         }
 
+        /*  Freeform queries & custom result types  */
+        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+        
+        String qString4 =   "SELECT e.name, e.card.issuedDate from Employee e";
+
+        TypedQuery<Object[]> query4 = entityManager.createQuery(qString4,Object[].class);
+        List<Object[]> resultList4 = query4.getResultList();
+
+        for (Object[] object : resultList4) {
+            System.out.println("Name : "+object[0]+" issued Access card on : "+object[1]);
+        }
+
         entityManager.close();
         emFactory.close();
     }
