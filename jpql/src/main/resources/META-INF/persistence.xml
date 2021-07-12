@@ -23,7 +23,7 @@
                 update : updates existing one Or creates first if doesn't exist
                 none : do nothing -_- (data can be read)
             -->
-            <property name="hibernate.hbm2ddl.auto" value="create" /> 
+            <property name="hibernate.hbm2ddl.auto" value="update" /> 
         </properties>
     </persistence-unit>
 

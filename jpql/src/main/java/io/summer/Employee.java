@@ -49,8 +49,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "\n*******\n" + "Employee :\n" + "employeeType=" + employeeType + ", id=" + id + ", lastUpdateAt="
-                + lastUpdateAt + ", name=" + name + ", ssn=" + ssn;
+        return "\n*******\n" + "Employee :\n" + "employeeType=" + employeeType + ", id=" + id + ", lastUpdateAt=" + lastUpdateAt + ", name=" + name + ", ssn=" + ssn+"\n*******\n";
     }
 
     public String getName() {
