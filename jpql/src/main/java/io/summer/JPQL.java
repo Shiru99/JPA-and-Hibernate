@@ -1,31 +1,41 @@
 package io.summer;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 public class JPQL 
 {
     public static void main( String[] args )
     {
-        Employee employee1 = new Employee("John Doe","123456789");
-        Employee employee2 = new Employee("Jenny Doe","123456789012",new Date(),EmployeeType.FULL_TIME);
-        Employee employee3 = new Employee("James Doe","123456789034",new Date(),EmployeeType.INTERN);
-
         EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("creator");
         EntityManager entityManager = emFactory.createEntityManager();
-        EntityTransaction entityTransaction =  entityManager.getTransaction();
-        
-        entityTransaction.begin();
 
-            entityManager.persist(employee1);
-            entityManager.persist(employee2);
-            entityManager.persist(employee3);
+        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+        /*
+            SQL query   :   "select * from employee_data;"
+            JPQL        :   "select e from Employee e"      // (class name)
+        */
 
-        entityTransaction.commit();
+        // Query query = entityManager.createQuery("select e from Employee e");
+        // List resultList = query.getResultList();
+
+        String qString =  "SELECT e FROM Employee e"+
+                    "   WHERE id>1"+
+                    "   ORDER BY e.name ASC";
+
+        TypedQuery<Employee> query = entityManager.createQuery(qString,Employee.class);
+        List<Employee> resultList = query.getResultList();
+
+        // resultList.forEach(System.out::println);
+        for (Employee e : resultList) {
+            System.out.println(e);
+        }
 
         entityManager.close();
         emFactory.close();
