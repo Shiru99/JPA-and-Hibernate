@@ -33,8 +33,12 @@ public class JPA_PersistanceContext
                 employeeType=INTERN, id=1, lastUpdateAt=Mon Jul 12 16:10:29 IST 2021, name=James Doe, ssn=123456789012
             */ 
             
+            // ----------------------------- flush() Detach() merge() -----------------------------
             entityManager.flush();
             entityManager.detach(employee);
+            /* To detach all entities from persistence context at that moment => clear */ 
+            // entityManager.clear();   
+
             employee.setName("What's in a name");
             System.out.println(entityManager.find(Employee.class,1));
             /* 
@@ -46,6 +50,17 @@ public class JPA_PersistanceContext
             /* 
                 employeeType=INTERN, id=1, lastUpdateAt=Mon Jul 12 16:18:54 IST 2021, name=What Is In The Name!, ssn=123456789012
             */
+
+            // ----------------------------- refresh() -----------------------------
+
+            Employee tEmployee = entityManager.find(Employee.class,1);
+            System.out.println(tEmployee);
+
+            tEmployee.setEmployeeType(EmployeeType.FULL_TIME);
+            System.out.println(tEmployee);
+
+            entityManager.refresh(tEmployee);   // reset the entity 
+            System.out.println(tEmployee);
 
         entityTransaction.commit();
         System.out.println(hash+"After Commit method"+hash);
