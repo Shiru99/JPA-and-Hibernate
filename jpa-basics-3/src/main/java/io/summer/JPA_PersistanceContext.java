@@ -12,7 +12,7 @@ public class JPA_PersistanceContext
     public static void main( String[] args )
     {
         String hash = " ################################# ";
-        Employee employee = new Employee("James Doe","123456789012",new Date(),EmployeeType.INTERN);
+        Employee james = new Employee("James Doe","123456789012",new Date(),EmployeeType.INTERN);
 
         System.out.println(hash+"Employee Instance Created"+hash);
 
@@ -24,14 +24,28 @@ public class JPA_PersistanceContext
         entityTransaction.begin();
         System.out.println(hash+"Started Transaction"+hash);
 
-            Employee employee1 = entityManager.find(Employee.class,1);
-            System.out.println(employee1);      // null
+            System.out.println(entityManager.find(Employee.class,1));  // null
 
-            entityManager.persist(employee);
+            entityManager.persist(james);
             System.out.println(hash+"After Persist method"+hash);
+            Employee employee = entityManager.find(Employee.class,1);
+            /* 
+                employeeType=INTERN, id=1, lastUpdateAt=Mon Jul 12 16:10:29 IST 2021, name=James Doe, ssn=123456789012
+            */ 
+            
+            entityManager.flush();
+            entityManager.detach(employee);
+            employee.setName("What's in a name");
+            System.out.println(entityManager.find(Employee.class,1));
+            /* 
+                employeeType=INTERN, id=1, lastUpdateAt=Mon Jul 12 16:10:29 IST 2021, name=James Doe, ssn=123456789012
+            */ 
 
-            Employee employee2 = entityManager.find(Employee.class,1);
-            System.out.println(employee2);  
+            entityManager.merge(employee);
+            System.out.println(entityManager.find(Employee.class,1));
+            /* 
+                employeeType=INTERN, id=1, lastUpdateAt=Mon Jul 12 16:18:54 IST 2021, name=What Is In The Name!, ssn=123456789012
+            */
 
         entityTransaction.commit();
         System.out.println(hash+"After Commit method"+hash);
