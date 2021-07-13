@@ -14,6 +14,10 @@
 
 ## Some Basic Terms & Definitions : [@](https://dzone.com/articles/resource-local-vs-jta-transaction-types-and-payara)
 
+* <b>What Is a Transaction?</b>
+    
+    A database transaction is a sequence of actions that are treated as a single unit of work. These actions should either complete entirely or take no effect at all.
+
 * <b>What Is a Persistent-Unit?</b>
 
     Think to the persistent-unit as a box holding all the needed information for creating an EntityManagerFactory instance. Among this information, we have details about the data source (JDBC URL, user, password, SQL dialect, etc), the list of entities that will be managed, and other specific properties.
