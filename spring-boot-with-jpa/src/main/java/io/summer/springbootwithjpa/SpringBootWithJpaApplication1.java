@@ -51,7 +51,7 @@ public class SpringBootWithJpaApplication1 {
 		Optional<Employee> e3 = employeeRepository.findById(4);
 		if(e2.isPresent()){
 			updateEmployeeAndAccessCard(e2.get());
-		}
+		}	
 	}
 
 	@Transactional
@@ -113,4 +113,18 @@ public class SpringBootWithJpaApplication1 {
 
 			BY default, for any exception happens spring auto-rollbacks
 	*/
+
+	/* Read Only Transaction (optimizes performance)
+
+			In race condition, spring will not block unrelated write or update ops during multiple read ops in given transaction
+	*/
+
+	@Transactional(readOnly = true)	// by default - false
+	private void readEmployees() {
+
+		// Read Employee
+		// Read AccessCard
+		// Read PayCheck
+
+	}
 }
