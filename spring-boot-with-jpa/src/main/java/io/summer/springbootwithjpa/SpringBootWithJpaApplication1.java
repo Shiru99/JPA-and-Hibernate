@@ -5,12 +5,14 @@ import java.util.Date;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
+// import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.summer.model.Employee;
@@ -41,13 +43,54 @@ public class SpringBootWithJpaApplication1 {
 			System.out.println("NOT Available");
 
 
-		Optional<Employee> e2 = employeeRepository.findById(2);
+		Optional<Employee> e2 = employeeRepository.findById(1);
 		if(e2.isPresent()){
 			updateEmployee(e2.get());
 		}
+
+		Optional<Employee> e3 = employeeRepository.findById(4);
+		if(e2.isPresent()){
+			updateEmployeeAndAccessCard(e2.get());
+		}
 	}
 
-	@Transactional(rollbackFor = SQLException.class, noRollbackFor = ArithmeticException.class)
+	@Transactional
+	private void updateEmployeeAndAccessCard(Employee e) {
+		updateEmployee(e);
+		// accesscardRepository.save(accessCard);
+	}
+
+		/*	Transaction Propagation :
+
+			Propagation.REQUIRED (by Default) :
+				
+				Spring checks if there is an active transaction, and if nothing exists, it creates a new one. Otherwise,  appends to the currently active transaction
+
+			Propagation.REQUIRES_NEW :
+
+				Even if it's part of transaction it will create new transaction
+
+			Propagation.MANDATORY :
+
+				If there is an active transaction, then it will be used. If there isn't an active transaction, then Spring throws an exception (it won't create new transaction)
+
+			Propagation.NEVER :
+
+				Spring throws an exception if there's an active transaction:
+
+			Propagation.NOT_SUPPORTED :
+
+				If a current transaction exists, first Spring suspends it, and then the business logic is executed without a transaction:
+
+			Propagation.SUPPORTS :
+
+				Spring first checks if an active transaction exists. If a transaction exists, then the existing transaction will be used. If there isn't a transaction, it is executed non-transactional
+
+		*/
+
+	// Transactional property for both JPA as well as Spring
+	@Transactional( propagation = Propagation.NOT_SUPPORTED,
+		rollbackFor = SQLException.class, noRollbackFor = ArithmeticException.class)
 	private void updateEmployee(Employee e) {
 
 		// Get Transaction
